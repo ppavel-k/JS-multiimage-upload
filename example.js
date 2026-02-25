@@ -1,5 +1,10 @@
 // Author is unknown
-let resizedImages = []; // Array to store Blobs
+
+// define somewhere formUrl and appropriate endpoint instead of '/np/index.htm'
+// based on materializecss
+
+
+                                let resizedImages = []; // Array to store Blobs
 
                                 const input_file = document.getElementById('img_file');
                                 input_file.addEventListener('change', () => {
@@ -34,7 +39,7 @@ let resizedImages = []; // Array to store Blobs
                                                 wrapper.remove();
 
                                                 // 2. Remove from the array
-                                                const index = resizedImages.indexOf(blob);
+                                                const index = resizedImages.indexOf(res.output.file);
                                                 if (index > -1) {
                                                     resizedImages.splice(index, 1);
                                                 }
@@ -66,7 +71,7 @@ let resizedImages = []; // Array to store Blobs
                                         });
 
                                         // Send via Fetch API
-                                        const response = await fetch('${baseLayout.getServerPath()}/np/index.htm', {
+                                        const response = await fetch(formUrl + '/np/index.htm', {
                                             method: 'POST',
                                             body: formData,
                                             headers: {
